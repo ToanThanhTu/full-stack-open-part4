@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs/
+Content-Type: application/json
+
+{
+    "title": "An Essay to Test The Blog Application",
+    "author": "John Smith",
+    "url": "https://notreallink.net/a-testing-blog",
+    "likes": 123
+}
