@@ -1,9 +1,10 @@
 POST http://localhost:3003/api/blogs/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2NmE4NzY5ZTkwM2E2MDM1MWM0NDlhZDYiLCJpYXQiOjE3MjIzMjU2OTAsImV4cCI6MTcyMjMyOTI5MH0.XgdYOON3IC8Dvo3Lw2zcLJp6_ufn6ey1rmF1MO-srqQ
 
 {
-    "title": "An Essay to Test The Blog Application",
-    "author": "John Smith",
+    "title": "Testing No Delete",
+    "author": "Tony Teo",
     "url": "https://notreallink.net/a-testing-blog",
-    "likes": 123
+    "likes": 3
 }
