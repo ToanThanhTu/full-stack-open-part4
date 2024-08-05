@@ -50,8 +50,6 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) =
 
     // Delete blog from the user object
     user.blogs = user.blogs.filter(b => {
-        console.log(`Blog to delete: ${blog.id}`);
-        console.log(`Checking: ${b.toString()}`)
         return b.toString() !== blog.id
     })
 
