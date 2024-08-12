@@ -1,8 +1,6 @@
-const jwt = require('jsonwebtoken')
 const blogsRouter = require('express').Router()
 const middleware = require('../utils/middleware')
 const Blog = require('../models/blog')
-const User = require('../models/user')
 
 blogsRouter.get('/', async (request, response) => {
     const blogs = await Blog
@@ -22,16 +20,18 @@ blogsRouter.post('/', middleware.userExtractor, async (request, response) => {
         url: body.url,
         title: body.title,
         author: body.author,
-        user: user.id,
+        user: user._id,
         likes: body.likes
     })
 
     const savedBlog = await blog.save()
 
-    user.blogs = user.blogs.concat(savedBlog._id)
+    const populatedBlog = await savedBlog.populate('user', { username: 1, name: 1 })
+
+    user.blogs = user.blogs.concat(populatedBlog._id)
     await user.save()
 
-    response.status(201).json(savedBlog)
+    response.status(201).json(populatedBlog)
 })
 
 blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) => {
